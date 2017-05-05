@@ -15,18 +15,24 @@
     </ul>
 
     <!-- Do not show sub-category items for 'All' or 'Other' main categories -->
+    <div class="services-sub-categories-wrap">
+      <div class="services-sub-categories" ng-if="$ctrl.currentFilter !== 'other' && $ctrl.currentFilter !== 'all'">
+        <div ng-repeat="subCategory in $ctrl.subCategories"
+             class="services-sub-category" ng-class="{'active': $ctrl.currentSubFilter === subCategory.id}">
+          <a href="" id="{{'services-sub-category-'+subCategory.id}}" class="services-sub-category-tab" ng-click="$ctrl.selectSubCategory(subCategory.id)">
+            <div class="services-sub-category-tab-image" ng-if="subCategory.imageUrl">
+              <img ng-src="{{subCategory.imageUrl}}" alt="">
+            </div>
+            <div class="services-sub-category-tab-icon {{subCategory.icon}}" ng-if="subCategory.icon && !subCategory.imageUrl"></div>
+            <div class="services-sub-category-tab-name">{{subCategory.label}}</div>
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <div class="services-sub-categories" ng-if="$ctrl.currentFilter !== 'other' && $ctrl.currentFilter !== 'all'">
-      <div ng-repeat="subCategory in $ctrl.subCategories"
-           class="services-sub-category" ng-class="{'active': $ctrl.currentSubFilter === subCategory.id}">
-        <a href=""  id="{{'services-sub-category-'+subCategory.id}}"
-           class="services-sub-category-tab" ng-click="$ctrl.selectSubCategory(subCategory.id)">
-          <div class="services-sub-category-tab-image" ng-if="subCategory.imageUrl">
-            <img ng-src="{{subCategory.imageUrl}}" alt="">
-          </div>
-          <div class="services-sub-category-tab-icon {{subCategory.icon}}" ng-if="subCategory.icon && !subCategory.imageUrl"></div>
-          <div class="services-sub-category-tab-name">{{subCategory.label}}</div>
-        </a>
+  <div class="bar">
+    <div ng-if="$ctrl.currentFilter !== 'other' && $ctrl.currentFilter !== 'all'">
+      <div ng-repeat="subCategory in $ctrl.subCategories" ng-class="{'active': $ctrl.currentSubFilter === subCategory.id}">
         <div ng-if="$ctrl.currentSubFilter === subCategory.id" class="services-items">
           <a href="" class="services-item" ng-repeat="item in $ctrl.filteredItems" ng-click="$ctrl.handleClick(item)">
             <div ng-if="!item.imageUrl" class="services-item-icon">
@@ -59,5 +65,7 @@
         </div>
       </a>
     </div>
+  </div> <!-- /bar -->
+
   </div>
 </div>

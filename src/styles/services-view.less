@@ -1,10 +1,7 @@
 .services-view {
   .services-item {
-    align-items: center;
     color: @text-color;
-    display: flex;
     min-height: 160px;
-    flex-direction: column;
     padding: (@grid-gutter-width / 8) (@grid-gutter-width / 4) (@grid-gutter-width / 2);
     text-align: center;
     width: 50%;
@@ -107,45 +104,68 @@
   }
 
   .services-items {
-    background-color: @color-pf-white;
-    display: flex;
-    flex-wrap: wrap;
-    padding: (@grid-gutter-width / 2);
+    // display: none
+    // background-color: @color-pf-white;
+    // display: flex;
+    // flex-wrap: wrap;
+    // padding: (@grid-gutter-width / 2);
   }
 
   .services-sub-categories {
     align-items: flex-start;
-    background: fade(@color-pf-blue-700, 90%);
     display: flex;
     flex-wrap: wrap;
     padding: 15px (@grid-gutter-width / 2) 0;
     position: relative;
 
-    .services-items {
-      border-top: 1px solid @color-pf-black-300;
-      left: 0;
-      position: absolute;
-      right: 0;
-    }
+    // .services-items {
+    //   border-top: 1px solid @color-pf-black-300;
+    //   left: 0;
+    //   position: absolute;
+    //   right: 0;
+    // }
+  }
+
+  .services-sub-category.active{
+    margin-bottom: 0 !important;
+  }
+  h1.foo {
+    background: tomato;
+    margin: 20px 0 !important;
+  }
+
+  .bar {
+    background: purple;
+  }
+
+  .services-sub-categories-wrap {
+    background: fade(@color-pf-blue-700, 90%);
   }
 
   .services-sub-category {
+    align-items: center;
     background-color: @color-pf-white;
-    border: 1px solid @color-pf-black-300;
-    display: inline-block;
-    margin: 0 -1px -1px 0;
+    display: inline-flex;
+    height: 100px;
+    justify-content: center;
+    margin: 0 0 1px 1px;
+    outline: 1px solid @color-pf-black-300;
+    width: 100px;
+    // margin: 0 -1px -1px 0;
 
     &.active .services-sub-category-tab {
       color: @text-color !important;
-      &:after { // shim to hide bottom border
-        background: @color-pf-white;
-        bottom: -1px;
-        content: "";
-        height: 1px;
-        position: absolute;
-        left: 0;
-        right: 0;
-        z-index: 2;
+      @media(min-width: @screen-sm-min) {
+        &:after { // shim to hide bottom border
+          background: @color-pf-white;
+          bottom: -1px;
+          content: "";
+          height: 1px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          z-index: 2;
+        }
       }
       .services-sub-category-tab-image img {
         opacity: 1;
@@ -162,12 +182,12 @@
       font-size: 14px;
       font-weight: 600;
       flex-direction: column;
-      height: 90px;
       justify-content: center;
-      min-width: 95px;
-      padding: 0 15px;
+      height: 100%;
+      // padding: 0 15px;
       position: relative;
       text-align: center;
+      width: 100%;
 
       &:focus,
       &:hover {
